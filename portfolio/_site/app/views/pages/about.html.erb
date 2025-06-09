@@ -1,0 +1,213 @@
+<!-- Portfolio Content -->
+<div class="container mt-5 p-0 d-flex flex-column align-items-center" style="max-width: 900px;">
+
+  <!-- Intro Section -->
+
+    <!-- Full width GIF background -->
+    <img src="https://64.media.tumblr.com/9784d3b00da16bb8bad811770c618465/7e19877fd8439b73-56/s500x750/23e9b49f8a0548c2122c0beb670c90c70b2e2f59.gif"
+         alt="Background animation"
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 240px; object-fit: cover; z-index: 0;" />
+
+    <!-- Avatar -->
+    <%= image_tag "memoji.png",
+      class: "rounded-circle shadow bg-light",
+      style: "width: 160px; height: 160px; object-fit: cover;  position: relative; z-index: 1; margin-top: 100px;"%>
+
+        <section id="intro" class="mb-4 p-0 position-relative text-center fade-in-up delay-1" style="margin: 0;">
+
+    <!-- Text -->
+    <h1 id="typewriter" class="mb-2 fw-bold px-4 py-4 mt-2" style="font-size: 2.5rem; letter-spacing: -1px; position: relative; z-index: 1; margin-top: 20px;"></h1>
+    <p class="lead text-muted" style="font-size: 1.25rem; position: relative; z-index: 1;">
+      Designer-dev focused on creative code and clear user journeys
+    </p>
+  </section>
+
+  <!-- About Me -->
+  <section class="mb-5 fade-in-up delay-2">
+    <div class="pro-ux-card">
+      <h2 class="mb-3">About Me</h2>
+      <p>
+        Hey, I’m Jordan Gilbert — a junior UX designer passionate about building tools that feel thoughtful, simple, and fast.
+        I transitioned into tech after starting out in accounts at a marketing agency. Through a couple of intense bootcamps,
+        I found my way into design and development, and haven’t looked back since.
+      </p>
+      <p>
+        I’m looking to grow in a team that gives me room to make mistakes (once!), learn from them, and build cool stuff along the way.
+        I love simplifying complex problems and believe the best solutions come from staying curious and thinking a bit differently.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bootcamps / Education -->
+  <section class="mb-5 fade-in-up delay-3">
+    <div class="pro-ux-card">
+      <h2 class="mb-4">My Learning Journey</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="pro-ux-card h-100">
+            <img src="https://www.lewagon.com/assets/lewagon-logo-square-ffe99941106de6d01c248f59bd1c999ad4f5f3da6e8922272c94764a3d2484cc.svg" alt="Le Wagon" />
+            <h5>Le Wagon</h5>
+            <p class="text-muted small mb-1">Web Development Bootcamp</p>
+            <p>
+              Learned full-stack development with Ruby on Rails, built real apps from scratch, and gained confidence in Git, databases, and writing clean, maintainable code.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="pro-ux-card h-100">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSDODY_3qHSGFpESsq3GJtCi9aZRt50nrokA&s" alt="General Assembly" />
+            <h5>General Assembly</h5>
+            <p class="text-muted small mb-1">UX Design Bootcamp</p>
+            <p>
+              Developed a strong UX foundation — from user research and journey mapping to wireframing and prototyping. Embraced user-first thinking and iterative design.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="mb-5 fade-in-up delay-4" style="width:100%" >
+    <div class="pro-ux-card">
+      <h2>Stack</h2>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;">
+        <% stack_items = [
+          { name: "Figma", src: "https://cdn3d.iconscout.com/3d/premium/thumb/figma-3d-icon-download-in-png-blend-fbx-gltf-file-formats--logo-call-speaker-cubes-graphic-design-pack-tools-icons-8973594.png" },
+          { name: "JavaScript", src: "https://cdn3d.iconscout.com/3d/free/thumb/free-javascript-3d-icon-download-in-png-blend-fbx-gltf-file-formats--html-logo-vue-angular-coding-lang-pack-logos-icons-7577991.png" },
+          { name: "Ruby", src: "https://cdn3d.iconscout.com/3d/free/thumb/free-ruby-3d-icon-download-in-png-blend-fbx-gltf-file-formats--programming-language-high-level-interpreted-logo-coding-lang-pack-logos-icons-7578016.png" },
+          { name: "CSS", src: "https://cdn3d.iconscout.com/3d/free/thumb/free-css-3d-icon-download-in-png-blend-fbx-gltf-file-formats--html-logo-css3-html5-cascading-style-sheets-coding-lang-pack-logos-icons-7578024.png" },
+          { name: "HTML", src: "https://cdn3d.iconscout.com/3d/premium/thumb/html5-logo-3d-icon-download-in-png-blend-fbx-gltf-file-formats--html-standards-responsive-semantic-multimedia-pack-design-development-icons-10471870.png" }
+        ] %>
+
+        <% stack_items.each do |item| %>
+          <div style="position: relative;"
+               onmouseover="this.querySelector('img').style.opacity='1'; this.querySelector('img').style.transform='translateY(-10px)'; this.querySelector('span').style.display='block';"
+               onmouseout="this.querySelector('img').style.opacity='0.3'; this.querySelector('img').style.transform='translateY(0)'; this.querySelector('span').style.display='none';">
+            <img src="<%= item[:src] %>" alt="<%= item[:name] %>"
+                 style="width: 90px; height: 90px; transition: transform 0.3s ease, opacity 0.3s ease; opacity: 0.3;">
+            <span style="background-color: black; color: white; padding: 6px 12px; border-radius: 10px; display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); font-size: 0.75rem; white-space: nowrap; margin-top: 6px;">
+              <%= item[:name] %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Global Styles -->
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: #f7f9fb;
+    color: #2a3142;
+    overflow-x: hidden;
+  }
+
+ .pro-ux-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 16px rgba(44, 62, 80, 0.07);
+  padding: 2rem;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+  width: 95%;
+  margin: 0 auto;
+}
+
+  .pro-ux-card:hover {
+    box-shadow: 0 4px 32px rgba(44, 62, 80, 0.12);
+  }
+
+  .pro-ux-card h2, .pro-ux-card h5 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .pro-ux-card img {
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+
+  @media (max-width: 600px) {
+    .pro-ux-card {
+      padding: 1.25rem;
+    }
+
+    h1#typewriter {
+      font-size: 1.7rem !important;
+    }
+  }
+
+  #stack span {
+  font-family: 'Source Code Pro', monospace;
+}
+
+
+</style>
+
+<!-- Scripts -->
+<script>
+  let typingTimeout;
+
+  function startTypewriter() {
+    const text = "Hi, I'm Jordan 👋";
+    const target = document.getElementById("typewriter");
+    if (!target) return;
+
+    target.innerHTML = "";
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        target.innerHTML += text.charAt(i);
+        i++;
+        typingTimeout = setTimeout(type, 80);
+      }
+    }
+
+    type();
+  }
+
+  function initFadeInObserver() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  }
+
+  document.addEventListener("turbo:load", () => {
+    startTypewriter();
+    initFadeInObserver();
+  });
+
+  document.addEventListener("turbo:before-cache", () => {
+    clearTimeout(typingTimeout);
+    const target = document.getElementById("typewriter");
+    if (target) target.innerHTML = "";
+  });
+</script>

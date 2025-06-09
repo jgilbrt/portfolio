@@ -1,0 +1,133 @@
+<div class="container contact-wrapper mt-5 py-5 fade-in-up show"
+     style="max-width: 600px; font-family: 'Source Code Pro', monospace; margin-left: auto; margin-right: auto;">
+
+  <h1 class="mb-4 text-center" style="letter-spacing: -0.5px; font-weight: 700;">Contact Me</h1>
+  <p class="lead text-center mb-4" style="color: #555;">
+    Have a project or just want to say hello? Fill out the form below!
+  </p>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success fade-in-up delay-1" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <form action="<%= contact_path %>" method="post" class="contact-form needs-validation fade-in-up delay-2" novalidate>
+    <%= csrf_meta_tags %>
+
+    <div class="mb-3">
+      <label for="name" class="form-label fw-bold">Name <span aria-hidden="true" style="color: orange;">*</span></label>
+      <input type="text" id="name" name="name" class="form-control" placeholder="Your full name" required aria-required="true" />
+      <div class="invalid-feedback">Please enter your name.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label fw-bold">Email <span aria-hidden="true" style="color: orange;">*</span></label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required aria-required="true" />
+      <div class="invalid-feedback">Please enter a valid email address.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="message" class="form-label fw-bold">Message <span aria-hidden="true" style="color: orange;">*</span></label>
+      <textarea id="message" name="message" rows="5" class="form-control" placeholder="Write your message here..." required aria-required="true"></textarea>
+      <div class="invalid-feedback">Please enter a message.</div>
+    </div>
+
+    <button type="submit" class="btn btn-secondary w-100 d-flex align-items-center justify-content-center gap-2" style="font-family: 'Source Code Pro', monospace; font-weight: 700;">
+      Send Message
+      <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="transform-origin: center;">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: #f7f9fb;
+    color: #2a3142;
+  }
+
+  .contact-wrapper {
+    background: #fff;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.12);
+    transition: box-shadow 0.3s ease;
+  }
+  .contact-wrapper:hover {
+    box-shadow: 0 6px 36px rgba(44, 62, 80, 0.18);
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 0.3rem rgba(255, 165, 0, 0.45);
+    border-color: orange;
+  }
+
+  .btn-primary {
+    background-color: orange;
+    border-color: orange;
+    font-weight: 700;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-primary:hover, .btn-primary:focus {
+    background-color: #cc8400;
+    border-color: #cc8400;
+    box-shadow: 0 4px 10px rgba(204, 132, 0, 0.6);
+  }
+
+  .send-icon {
+    animation: pulse 2.5s infinite ease-in-out;
+  }
+  @keyframes pulse {
+    0%, 100% { stroke-opacity: 1; transform: translateX(0); }
+    50% { stroke-opacity: 0.7; transform: translateX(3px); }
+  }
+
+  .delay-1 { transition-delay: 0.15s; }
+  .delay-2 { transition-delay: 0.3s; }
+
+  /* Center vertically and horizontally on bigger screens */
+  @media (min-width: 768px) {
+    body, html {
+      height: 100%;
+    }
+    .contact-wrapper {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      el.classList.add('show');
+    });
+  });
+</script>
+
+<style>
+body {
+  padding-top: 56px; /* adjust if your navbar is taller */
+  background: #f7f9fb;
+  color: #2a3142;
+}
+</style>

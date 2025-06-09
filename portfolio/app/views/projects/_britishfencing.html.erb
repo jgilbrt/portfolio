@@ -1,0 +1,163 @@
+<div class="container py-1 fade-in-up show" style="max-width: 900px;">
+  <!-- Tag Navigation -->
+  <div class="tag-nav d-flex gap-2 flex-wrap mb-4 fade-in-up delay-0">
+    <a href="#intro" class="tag-link">Intro</a>
+    <a href="#research" class="tag-link">Research</a>
+    <a href="#problem" class="tag-link">Problem</a>
+    <a href="#ideation" class="tag-link">Ideation</a>
+    <a href="#prototype" class="tag-link">Prototype</a>
+  </div>
+
+  <!-- Hero Title -->
+  <section class="mb-4 text-center fade-in-up delay-1">
+    <h1 id="typewriter" class="fw-bold" style="font-size: 2.5rem; letter-spacing: -1px;">Information Architecture Research Project</h1>
+    <p class="lead text-muted">Increasing usability and satisfaction through information architecture improvements.</p>
+  </section>
+
+  <!-- Hero Image -->
+  <section class="mb-5 text-center fade-in-up delay-2">
+    <div class="rounded shadow overflow-hidden pro-ux-card" style="height: 40vh; width: 100%; background: #fff;">
+      <img src="https://freight.cargo.site/t/original/i/5b4cc062d685ba39a884774e058e39e1070f33430879e0af609e8a8bc4674a0f/006_Cardsort_Square_1.gif"
+           alt="Placeholder GIF"
+           style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+  </section>
+
+  <!-- Sections -->
+  <section id="intro" class="mb-5 fade-in-up delay-3">
+    <div class="card p-4 pro-ux-card">
+      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Intro</h2>
+      <p>Information Architecture Project - 22% increase in user satisfaction. British Fencing, the governing body for fencing in the UK asked us to overhaul the site’s information architecture...</p>
+    </div>
+  </section>
+
+  <section id="research" class="mb-5 fade-in-up delay-4">
+    <div class="card p-4 pro-ux-card">
+      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Research</h2>
+      <p>We conducted interviews with 12 active users... Conway’s Law... System Usability Scale (SUS)...</p>
+    </div>
+  </section>
+
+  <section id="problem" class="mb-5 fade-in-up delay-5">
+    <div class="card p-4 pro-ux-card">
+      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Problem</h2>
+      <p>We created personas... “How might we help Alex save time...”</p>
+    </div>
+  </section>
+
+  <section id="ideation" class="mb-5 fade-in-up delay-6">
+    <div class="card p-4 pro-ux-card">
+      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Ideation</h2>
+      <p>Card sorting... similarity matrix... tree testing... updated site map...</p>
+    </div>
+  </section>
+
+  <section id="prototype" class="mb-5 fade-in-up delay-7">
+    <div class="card p-4 pro-ux-card">
+      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Prototype</h2>
+      <p>We ran usability tests... improved navigation... 146.3% SUS increase...</p>
+    </div>
+  </section>
+</div>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #f7f9fb;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    color: #2a3142;
+  }
+
+  .pro-ux-card {
+    border: none;
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: 0 2px 16px 0 rgba(44, 62, 80, 0.07);
+    transition: box-shadow 0.2s;
+  }
+  .pro-ux-card:hover {
+    box-shadow: 0 4px 32px 0 rgba(44, 62, 80, 0.12);
+  }
+
+  .tag-link {
+    background: lightgrey;
+    color: #2a3142;
+    border: 1px solid #e0e7ef;
+    font-size: 0.9rem;
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 2px 0 rgba(44, 62, 80, 0.03);
+  }
+
+  .tag-link:hover {
+    background: #e0e7ef;
+    color: orange;
+    border-color: #b6c6e3;
+  }
+
+  .tag-nav {
+    justify-content: center;
+    position: relative;
+  }
+
+  @media (min-width: 900px) {
+    .tag-nav {
+      position: fixed !important;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      flex-direction: column !important;
+      gap: 10px !important;
+      background: transparent !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      justify-content: flex-start !important;
+      z-index: 1000;
+      width: max-content;
+    }
+  }
+
+  h1, h2 {
+    letter-spacing: -0.5px;
+  }
+
+  .delay-0 { transition-delay: 0s; }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+  .delay-6 { transition-delay: 0.6s; }
+  .delay-7 { transition-delay: 0.7s; }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 1rem !important;
+    }
+    h1#typewriter {
+      font-size: 1.7rem !important;
+    }
+    .pro-ux-card {
+      padding: 1.2rem !important;
+    }
+    .tag-link {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    el.classList.add('show');
+  });
+});
+</script>

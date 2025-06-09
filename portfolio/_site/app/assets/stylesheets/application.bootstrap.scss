@@ -1,0 +1,21 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap');
+
+body, h1, h2, h3, h4, h5, h6, p, a {
+  font-family: 'Source Code Pro', monospace;
+}
+
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #f8f9fa !important;
+}
+
+body.dark-mode .navbar {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  color: #f8f9fa;
+}
