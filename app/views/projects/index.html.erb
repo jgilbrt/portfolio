@@ -3,18 +3,11 @@
   <meta name="turbo-cache-control" content="no-cache">
 </head>
 
-<!-- Outside button with different ID -->
-<div class="toggle-btn-container px-3 py-4 ms-2">
-  <button id="toggle-projects-btn-outside" class="btn btn-outline-secondary btn-sm" aria-expanded="true" aria-controls="projects-container">
-    Hide Projects Outside
-  </button>
-</div>
-
 
 <div class="project-wrapper">
 
-  <div class="toggle-btn-container px-3 py-4 ms-2">
-    <button id="toggle-projects-btn" class="btn btn-outline-secondary btn-sm" aria-expanded="true" aria-controls="projects-container">
+  <div class="toggle-btn-container px-3 py-4 mt-4 ms-2">
+    <button id="toggle-projects-btn" class="btn btn-outline-secondary btn-sm mt-5" aria-expanded="true" aria-controls="projects-container">
       Hide Projects
     </button>
   </div>
@@ -49,10 +42,19 @@
 </div>
 
 <button id="back-to-top-btn" class="btn btn-secondary btn-sm position-fixed" style="bottom: 30px; right: 30px; z-index: 1100; font-family: 'Source Code Pro', monospace;">
-  Back to Top
+  ↑
 </button>
 
 <style>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: #f7f9fb;
+    color: #2a3142;
+  }
+
 body, .project-type-label, #back-to-top-btn, #toggle-projects-btn {
   font-family: 'Source Code Pro', monospace;
 }
@@ -234,7 +236,7 @@ function initProjectCards() {
 
   if (backToTopBtn) {
     backToTopBtn.onclick = () => {
-      projectsContainer.scrollTo({ left: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
   }
 
