@@ -1,9 +1,10 @@
-<div class="container contact-wrapper mt-5 py-5 fade-in-up show"
+<div class="container contact-wrapper mt-5 py-5 mb-5 px-5 fade-in-up show"
      style="max-width: 600px; font-family: 'Source Code Pro', monospace; margin-left: auto; margin-right: auto;">
 
   <h1 class="mb-4 text-center" style="letter-spacing: -0.5px; font-weight: 700;">Contact Me</h1>
   <p class="lead text-center mb-4" style="color: #555;">
-  If you'd like to collaborate, fill out the form below!  </p>
+    If you'd like to collaborate, fill out the form below!
+  </p>
 
   <% if flash[:notice] %>
     <div class="alert alert-success fade-in-up delay-1" role="alert">
@@ -34,7 +35,7 @@
 
     <button type="submit" class="btn btn-secondary w-100 d-flex align-items-center justify-content-center gap-2" style="font-family: 'Source Code Pro', monospace;">
       Send Message
-      <svg class="send-icon dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style=" color: orange;transform-origin: center;">
+      <svg class="send-icon dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="color: orange; transform-origin: center;">
         <line x1="22" y1="2" x2="11" y2="13"></line>
         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
       </svg>
@@ -43,17 +44,15 @@
 </div>
 
 <style>
-  html {
-  margin: 20px;
-    scroll-behavior: smooth;
-  }
+
   body {
-  margin-bottom:20px;
+    padding-top: 60px; /* enough space below navbar */
     background: #f7f9fb;
     color: #2a3142;
   }
 
   .contact-wrapper {
+    margin-top: 5rem; /* space below navbar on all screen sizes */
     background: #fff;
     border-radius: 1.25rem;
     box-shadow: 0 4px 24px rgba(44, 62, 80, 0.12);
@@ -97,7 +96,7 @@
       height: 100%;
     }
     .contact-wrapper {
-      margin-top: 4rem;
+      margin-top: 4rem; /* bigger margin on desktop */
       margin-bottom: 4rem;
     }
   }
@@ -124,11 +123,3 @@
     });
   });
 </script>
-
-<style>
-body {
-  padding-top: 56px; /* adjust if your navbar is taller */
-  background: #f7f9fb;
-  color: #2a3142;
-}
-</style>

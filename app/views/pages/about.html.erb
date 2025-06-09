@@ -6,7 +6,7 @@
     <!-- Full width GIF background -->
 <img src="https://img.itch.zone/aW1hZ2UvMTUxODgwMi84ODU3OTM2LmdpZg==/original/JxtoBT.gif"
      alt="Background animation"
-     style="position: absolute; top: 0; left: 0; width: 100%; height: clamp(240px, 35vh, 320px); object-fit: cover; z-index: 0;" class = />
+     style="position: absolute; top: 0; left: 0; width: 100%; height: object-fit: cover; z-index: 0;" class = />
 
     <!-- Avatar -->
     <%= image_tag "memoji.png",
@@ -94,7 +94,8 @@
       </div>
     </div>
   </section>
-<div class="text-center mb-5 fade-in-up delay-5">
+
+<div class="text-center mb-4 mt-4 fade-in-up delay-5">
   <%= link_to "Go To My Projects", projects_path, class: "btn btn-secondary btn-lg rounded px-4 py-2", style: "font-family: 'Source Code Pro', monospace;" %>
 </div>
 
@@ -102,14 +103,22 @@
 
 <!-- Global Styles -->
 <style>
-  html, body {
-    margin: 20px;
-    padding: 0;
-    scroll-behavior: smooth;
-    background: #f7f9fb;
-    color: #2a3142;
-    overflow-x: hidden;
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin:20px;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
   }
+}
 
  .pro-ux-card {
   background: #fff;
@@ -168,7 +177,7 @@
 
 @media (min-height: 700px) {
   img[alt="Background animation"] {
-    height: 300px !important;
+    height: 260px !important;
   }
 }
 
