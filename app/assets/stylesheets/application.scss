@@ -1,0 +1,63 @@
+// app/assets/stylesheets/application.scss
+
+// If you are using the Bootstrap Gem, you will have a line like this:
+@import "bootstrap"; // This imports Bootstrap's SCSS files
+
+// If you have specific Bootstrap overrides or custom Bootstrap-related SCSS in application.bootstrap.scss,
+// you would import it here. Otherwise, you can put all your custom styles directly below.
+// @import "application.bootstrap"; // Only if application.bootstrap.scss holds relevant imports/overrides
+
+/* Global CSS for sticky footer and navbar clearance - ALL YOUR CUSTOM STYLES */
+body {
+  background-color: red !important; /* Your test color - change to white later! */
+  font-family: 'Source Code Pro', monospace !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+#page-content-wrapper {
+  flex-grow: 1;
+  padding-top: 70px;
+}
+
+footer {
+    background-color: white;
+}
+
+.form-control:focus {
+    border-color: orange;
+    box-shadow: 0 0 0 0.25rem rgba(255, 165, 0, 0.25);
+}
+
+.send-icon {
+  animation: pulse 2.5s infinite ease-in-out;
+}
+@keyframes pulse {
+  0%, 100% { stroke-opacity: 1; transform: translateX(0); }
+  50% { stroke-opacity: 0.7; transform: translateX(3px); }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+.delay-4 { transition-delay: 0.6s; }
+.delay-5 { transition-delay: 0.75s; }
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

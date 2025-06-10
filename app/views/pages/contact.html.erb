@@ -1,121 +1,115 @@
-<div class="container contact-wrapper mt-5 py-5 mb-5 px-5 fade-in-up show"
-     style="max-width: 600px; font-family: 'Source Code Pro', monospace; margin-left: auto; margin-right: auto;">
+<div class="container contact-wrapper mt-4 mb-5 py-5 px-5"
+     style="max-width: 600px; border-radius: 20px; background: rgba(0, 0, 0, 0.8); box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(6px); position: relative; overflow: hidden;">
 
-  <h1 class="mb-4 text-center" style="letter-spacing: -0.5px; font-weight: 700;">Contact Me</h1>
-  <p class="lead text-center mb-4" style="color: #555;">
-    If you'd like to collaborate, fill out the form below!
-  </p>
 
-  <% if flash[:notice] %>
-    <div class="alert alert-success fade-in-up delay-1" role="alert">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
+  <div style="position: relative; z-index: 1;">
+    <h1 class="mb-4 text-center text-warning" style="letter-spacing: -0.5px; font-weight: 700;">CONTACT ME</h1> <%# Added gold color for heading %>
+    <p class="lead text-center text-light mb-5">Ready to collaborate or have a question? Drop me a line below!</p>
 
-  <form action="<%= contact_path %>" method="post" class="contact-form needs-validation fade-in-up delay-2" novalidate>
-    <%= csrf_meta_tags %>
+    <% if flash[:notice] %>
+      <div class="alert alert-success fade-in-up" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
-    <div class="mb-3">
-      <label for="name" class="form-label fw-bold">Name <span aria-hidden="true" style="color: orange;">*</span></label>
-      <input type="text" id="name" name="name" class="form-control" placeholder="Your full name" required aria-required="true" />
-      <div class="invalid-feedback">Please enter your name.</div>
-    </div>
+    <form action="<%= contact_path %>" method="post" class="contact-form needs-validation fade-in-up" novalidate>
+      <%= csrf_meta_tags %>
 
-    <div class="mb-3">
-      <label for="email" class="form-label fw-bold">Email <span aria-hidden="true" style="color: orange;">*</span></label>
-      <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required aria-required="true" />
-      <div class="invalid-feedback">Please enter a valid email address.</div>
-    </div>
+      <div class="mb-3">
+        <label for="name" class="form-label fw-bold text-light">Name <span class="text-warning">*</span></label>
+        <input type="text" id="name" name="name" class="form-control glow-field" placeholder="Your full name" required aria-required="true" />
+        <div class="invalid-feedback">Please enter your name.</div>
+      </div>
 
-    <div class="mb-3">
-      <label for="message" class="form-label fw-bold">Message <span aria-hidden="true" style="color: orange;">*</span></label>
-      <textarea id="message" name="message" rows="5" class="form-control" placeholder="Write your message here..." required aria-required="true"></textarea>
-      <div class="invalid-feedback">Please enter a message.</div>
-    </div>
+      <div class="mb-3">
+        <label for="email" class="form-label fw-bold text-light">Email <span class="text-warning">*</span></label>
+        <input type="email" id="email" name="email" class="form-control glow-field" placeholder="you@example.com" required aria-required="true" />
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+      </div>
 
-    <button type="submit" class="btn btn-secondary w-100 d-flex align-items-center justify-content-center gap-2" style="font-family: 'Source Code Pro', monospace;">
-      Send Message
-      <svg class="send-icon dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="color: orange; transform-origin: center;">
+      <div class="mb-4">
+        <label for="message" class="form-label fw-bold text-light">Message <span class="text-warning">*</span></label>
+        <textarea id="message" name="message" rows="6" class="form-control glow-field" placeholder="Tell me about your project or inquiry..." required aria-required="true"></textarea>
+        <div class="invalid-feedback">Please enter a message.</div>
+      </div>
+
+    <button type="submit"
+            class="btn btn-outline-warning btn-lg fw-bold text-uppercase px-4 py-3 rounded-3 border-3 d-flex align-items-center justify-content-center gap-2 w-100"
+            id="send-button"
+            style="font-size: 1.2rem;">
+      <span>Send Message</span>
+      <svg id="send-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          viewBox="0 0 24 24" style="transition: transform 0.4s ease;">
         <line x1="22" y1="2" x2="11" y2="13"></line>
         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
       </svg>
     </button>
-  </form>
+    </form>
+  </div>
 </div>
 
-<style>
-
-  body {
-    padding-top: 60px; /* enough space below navbar */
-  }
-
-  .contact-wrapper {
-    margin-top: 5rem; /* space below navbar on all screen sizes */
-    border-radius: 1.25rem;
-    transition: box-shadow 0.3s ease;
-  }
-  .contact-wrapper:hover {
-    box-shadow: 0 6px 36px rgba(44, 62, 80, 0.18);
-  }
-
-  .form-control:focus {
-    box-shadow: 0 0 0 0.3rem rgba(255, 165, 0, 0.45);
-    border-color: orange;
-  }
-
-  .btn-primary {
-    background-color: orange;
-    border-color: orange;
-    font-weight: 700;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .btn-primary:hover, .btn-primary:focus {
-    background-color: #cc8400;
-    border-color: #cc8400;
-    box-shadow: 0 4px 10px rgba(204, 132, 0, 0.6);
-  }
-
-  .send-icon {
-    animation: pulse 2.5s infinite ease-in-out;
-  }
-  @keyframes pulse {
-    0%, 100% { stroke-opacity: 1; transform: translateX(0); }
-    50% { stroke-opacity: 0.7; transform: translateX(3px); }
-  }
-
-  .delay-1 { transition-delay: 0.15s; }
-  .delay-2 { transition-delay: 0.3s; }
-
-  /* Center vertically and horizontally on bigger screens */
-  @media (min-width: 768px) {
-    body, html {
-      height: 100%;
-    }
-    .contact-wrapper {
-      margin-top: 4rem; /* bigger margin on desktop */
-      margin-bottom: 4rem;
-    }
-  }
-</style>
-
 <script>
-  (function () {
-    'use strict'
-    const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach(function (form) {
+  (() => {
+    // Bootstrap validation
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
       form.addEventListener('submit', function (event) {
         if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          const icon = document.getElementById("send-icon");
+          icon.style.transform = "translateX(8px) rotate(45deg)";
+          setTimeout(() => icon.style.transform = "translateX(80px) rotate(45deg)", 300);
         }
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
-
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('.fade-in-up').forEach(el => {
-      el.classList.add('show');
+        form.classList.add('was-validated');
+      }, false);
     });
-  });
+
+    // Glow & 3D tilt on inputs
+    document.querySelectorAll('.glow-field').forEach(input => {
+      input.addEventListener('focus', () => {
+        input.style.boxShadow = '0 0 12px rgba(255,215,0,0.5)';
+        input.style.transition = 'transform 0.2s ease, box-shadow 0.3s ease';
+      });
+      input.addEventListener('blur', () => input.style.boxShadow = '');
+      input.addEventListener('mousemove', (e) => {
+        const rect = input.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        input.style.transform = `perspective(500px) rotateX(${(y - rect.height/2)/15}deg) rotateY(${(x - rect.width/2)/15 * -1}deg)`;
+      });
+      input.addEventListener('mouseleave', () => input.style.transform = 'none');
+    });
+
+    // Fade-in on load
+    document.addEventListener("turbo:load", () => {
+      document.querySelectorAll('.fade-in-up').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          el.style.transition = 'all 0.6s ease';
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        }, 200);
+      });
+    });
+
+    document.addEventListener("turbo:before-cache", () => {
+      document.querySelectorAll('.fade-in-up').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+      });
+    });
+  })();
 </script>
+<style>
+body {
+  background-image: url('<%= asset_path("star.gif") %>');
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  margin:20px;
+}
+</style>

@@ -1,163 +1,279 @@
-<div class="container py-1 fade-in-up show" style="max-width: 900px;">
-  <!-- Tag Navigation -->
-  <div class="tag-nav d-flex gap-2 flex-wrap mb-4 fade-in-up delay-0">
-    <a href="#intro" class="tag-link">Intro</a>
-    <a href="#research" class="tag-link">Research</a>
-    <a href="#problem" class="tag-link">Problem</a>
-    <a href="#ideation" class="tag-link">Ideation</a>
-    <a href="#prototype" class="tag-link">Prototype</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details - Information Architecture Research</title>
+  <meta name="turbo-cache-control" content="no-cache">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OerWEesFJ7fQT/1RpHcQmt/bhwP4pWg/gNFgW8/JmZfF9" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* General styles & Typography */
+    html { scroll-behavior: smooth; }
+    body {
+      background: #f7f9fb; /* Light background for clean look */
+      font-family: 'Inter', sans-serif;
+      color: #343a40; /* Dark grey for body text */
+      line-height: 1.6;
+      padding-top: 40px; /* Adjust if a fixed header is present */
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700; /* Bolder headings */
+      color: #212529; /* Darker for headings */
+      letter-spacing: -0.03em; /* Tighten letter spacing slightly for headings */
+    }
+    .code-font { font-family: 'Source Code Pro', monospace; }
+    p { font-size: 1.05rem; margin-bottom: 1rem; } /* Slightly larger paragraphs */
+
+    /* Container adjustments */
+    .container { padding-top: 3rem; padding-bottom: 3rem; }
+
+    /* Pro UX Card styling */
+    .pro-ux-card {
+      border: none;
+      border-radius: 1.5rem; /* More pronounced rounded corners */
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(44, 62, 80, 0.08); /* Softer, deeper shadow */
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    .pro-ux-card:hover {
+      box-shadow: 0 10px 30px rgba(44, 62, 80, 0.12); /* More prominent hover shadow */
+    }
+
+    /* Tag Navigation */
+    .tag-link {
+      background: #f0f2f5; /* Lighter background for tags */
+      color: #5a6268; /* Muted text color */
+      border: 1px solid #e9ecef; /* Subtle border */
+      font-size: 0.9rem;
+      padding: 8px 18px; /* More generous padding */
+      border-radius: 999px; /* Pill shape */
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+    }
+    .tag-link:hover {
+      background: #e2e6ea; /* Slightly darker on hover */
+      color: #0d6efd; /* Accent color on hover */
+      border-color: #d1d6db;
+      transform: translateY(-1px); /* Slight lift */
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+    .tag-link.active { /* For the currently active section */
+      background: #0d6efd; /* Primary blue for active */
+      color: white;
+      border-color: #0d6efd;
+      box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Fixed Tag Navigation for Desktop */
+    @media (min-width: 992px) { /* Changed from 900px to 992px for Bootstrap's lg breakpoint */
+      .tag-nav {
+        position: fixed;
+        top: 50%;
+        right: 40px; /* More space from edge */
+        transform: translateY(-50%);
+        flex-direction: column;
+        gap: 12px; /* More space between tags */
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        justify-content: flex-start;
+        z-index: 1000;
+        width: auto; /* Let content dictate width */
+      }
+      .tag-nav .tag-link {
+        min-width: 120px; /* Ensure consistent width for fixed nav links */
+        text-align: center;
+      }
+    }
+
+    /* Hero Image Section */
+    .hero-image-container {
+      border-radius: 1.5rem; /* Matches card border-radius */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Deeper shadow for hero */
+      overflow: hidden;
+      background: linear-gradient(135deg, #f0f2f5, #e0e4eb); /* Subtle background for image container */
+      padding: 0; /* Remove padding from .pro-ux-card if it's here */
+    }
+    .hero-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 1.5rem; /* Maintain border radius on image itself */
+    }
+
+    /* Typewriter effect for heading */
+    #typewriter {
+      font-size: 2.8rem; /* Slightly larger for impact */
+      border-right: .15em solid orange; /* The typing cursor */
+      white-space: nowrap; /* Keeps text on a single line */
+      overflow: hidden; /* Ensures only visible characters are shown */
+      animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
+      animation-delay: 0.5s; /* Delay start after fade-in-up */
+      animation-fill-mode: forwards; /* Keep final state */
+      width: 0; /* Start with no width */
+    }
+
+    /* Typing animation */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    /* Blinking cursor animation */
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+
+
+    /* Fade-in-up animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-0 { transition-delay: 0s; }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+    .delay-7 { transition-delay: 0.7s; }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      body { padding-top: 20px !important; } /* Less padding on small screens */
+      .container { padding-top: 2rem; padding-bottom: 2rem; }
+      h1#typewriter { font-size: 2rem !important; }
+      .lead { font-size: 1rem; }
+      .hero-image-container { height: 30vh !important; border-radius: 1rem; }
+      .hero-image-container img { border-radius: 1rem; }
+      .pro-ux-card { padding: 1.5rem !important; border-radius: 1rem; }
+      .tag-link { font-size: 0.85rem; padding: 7px 14px; }
+      .tag-nav { justify-content: center !important; } /* Ensure centered for mobile */
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container py-1" style="max-width: 900px;">
+    <div class="tag-nav d-flex gap-2 flex-wrap mb-4 fade-in-up delay-0">
+      <a href="#intro" class="tag-link">Intro</a>
+      <a href="#research" class="tag-link">Research</a>
+      <a href="#problem" class="tag-link">Problem</a>
+      <a href="#ideation" class="tag-link">Ideation</a>
+      <a href="#prototype" class="tag-link">Prototype</a>
+    </div>
+
+    <section class="mb-5 text-center fade-in-up delay-1">
+      <h1 id="typewriter" class="fw-bold code-font text-dark">Information Architecture Research Project</h1>
+      <p class="lead text-muted mt-3">Increasing usability and satisfaction through information architecture improvements.</p>
+    </section>
+
+    <section class="mb-5 fade-in-up delay-2">
+      <div class="hero-image-container rounded shadow overflow-hidden" style="height: 45vh; width: 100%;">
+        <img src="https://freight.cargo.site/t/original/i/5b4cc062d685ba39a884774e058e39e1070f33430879e0af609e8a8bc4674a0f/006_Cardsort_Square_1.gif"
+             alt="Information Architecture Project GIF">
+      </div>
+    </section>
+
+    <section id="intro" class="mb-5 fade-in-up delay-3">
+      <div class="card p-5 pro-ux-card">
+        <h2 class="mb-4">Intro</h2>
+        <p>This Information Architecture Project led to a **22% increase in user satisfaction** for British Fencing, the governing body for fencing in the UK. Our task was to completely overhaul the site's existing information architecture, which was identified as a major barrier to user engagement and efficient content discovery.</p>
+        <p>Our work focused on understanding the complex needs of fencers, coaches, officials, and administrators to build a more intuitive and accessible digital experience. By streamlining content organization and navigation pathways, we aimed to significantly improve how users interact with critical information and services.</p>
+      </div>
+    </section>
+
+    <section id="research" class="mb-5 fade-in-up delay-4">
+      <div class="card p-5 pro-ux-card">
+        <h2 class="mb-4">Research</h2>
+        <p>Our research phase was comprehensive, beginning with **interviews with 12 active users** representing diverse segments of the British Fencing community. These interviews provided crucial qualitative data on pain points and desired functionalities.</p>
+        <p>We applied principles inspired by **Conway’s Law** to understand how the organization's structure influenced their existing digital platforms. A **System Usability Scale (SUS)** survey was administered to baseline the current site's usability, providing a quantitative measure for improvement. This rigorous approach ensured our design decisions were data-driven and user-centric.</p>
+      </div>
+    </section>
+
+    <section id="problem" class="mb-5 fade-in-up delay-5">
+      <div class="card p-5 pro-ux-card">
+        <h2 class="mb-4">Problem</h2>
+        <p>Identifying the core problems was paramount. We created **detailed personas** such as "Alex, the Aspiring Athlete," to encapsulate user needs and frustrations. This allowed us to frame the challenges as clear "How might we..." statements.</p>
+        <p>For instance, **“How might we help Alex save time finding competition rules and results?”** This reframing guided our problem-solving process, ensuring that every solution directly addressed a real user need. The existing architecture was a maze, leading to high bounce rates and user frustration.</p>
+      </div>
+    </section>
+
+    <section id="ideation" class="mb-5 fade-in-up delay-6">
+      <div class="card p-5 pro-ux-card">
+        <h2 class="mb-4">Ideation</h2>
+        <p>In the ideation phase, we employed several key UX techniques. **Card sorting** with representative users helped us understand their mental models for content categorization, leading to a natural and intuitive grouping of information.</p>
+        <p>We then generated a **similarity matrix** from the card sort data to identify strong relationships between content items. **Tree testing** validated our proposed navigation structure, allowing us to identify and rectify usability issues early on. Based on these insights, we meticulously developed an **updated site map** that laid the foundation for the new, user-friendly architecture.</p>
+      </div>
+    </section>
+
+    <section id="prototype" class="mb-5 fade-in-up delay-7">
+      <div class="card p-5 pro-ux-card">
+        <h2 class="mb-4">Prototype</h2>
+        <p>The culmination of our work was the creation of a high-fidelity prototype. We ran **usability tests** with new participants to gather feedback on the redesigned navigation and content presentation. These tests revealed a dramatic improvement in task completion rates and user satisfaction.</p>
+        <p>Post-implementation, we observed a **146.3% SUS (System Usability Scale) increase** compared to the original site's baseline, confirming the profound positive impact of our information architecture improvements. This project not only enhanced the digital experience for British Fencing's community but also set a new standard for their online presence.</p>
+      </div>
+    </section>
+
   </div>
 
-  <!-- Hero Title -->
-  <section class="mb-4 text-center fade-in-up delay-1">
-    <h1 id="typewriter" class="fw-bold" style="font-size: 2.5rem; letter-spacing: -1px;">Information Architecture Research Project</h1>
-    <p class="lead text-muted">Increasing usability and satisfaction through information architecture improvements.</p>
-  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhyUVSEpCPhJiwMDFwSFOwK7g" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fade-in-up animation on load
+      document.querySelectorAll('.fade-in-up').forEach(el => {
+        el.classList.add('show');
+      });
 
-  <!-- Hero Image -->
-  <section class="mb-5 text-center fade-in-up delay-2">
-    <div class="rounded shadow overflow-hidden pro-ux-card" style="height: 40vh; width: 100%; background: #fff;">
-      <img src="https://freight.cargo.site/t/original/i/5b4cc062d685ba39a884774e058e39e1070f33430879e0af609e8a8bc4674a0f/006_Cardsort_Square_1.gif"
-           alt="Placeholder GIF"
-           style="width: 100%; height: 100%; object-fit: cover;">
-    </div>
-  </section>
+      // Typewriter effect trigger after fade-in
+      const typewriterElement = document.getElementById('typewriter');
+      if (typewriterElement) {
+        typewriterElement.style.width = 'fit-content'; /* Allow animation to define width */
+      }
 
-  <!-- Sections -->
-  <section id="intro" class="mb-5 fade-in-up delay-3">
-    <div class="card p-4 pro-ux-card">
-      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Intro</h2>
-      <p>Information Architecture Project - 22% increase in user satisfaction. British Fencing, the governing body for fencing in the UK asked us to overhaul the site’s information architecture...</p>
-    </div>
-  </section>
+      // Active tag link on scroll
+      const sections = document.querySelectorAll('section[id]');
+      const tagLinks = document.querySelectorAll('.tag-nav .tag-link');
 
-  <section id="research" class="mb-5 fade-in-up delay-4">
-    <div class="card p-4 pro-ux-card">
-      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Research</h2>
-      <p>We conducted interviews with 12 active users... Conway’s Law... System Usability Scale (SUS)...</p>
-    </div>
-  </section>
+      const setActiveTag = () => {
+        let currentActive = null;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          const rect = section.getBoundingClientRect();
+          // Consider a section active if its top is within 50% of the viewport height
+          // and it hasn't scrolled past the middle of the viewport
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            currentActive = section.id;
+            break;
+          }
+        }
 
-  <section id="problem" class="mb-5 fade-in-up delay-5">
-    <div class="card p-4 pro-ux-card">
-      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Problem</h2>
-      <p>We created personas... “How might we help Alex save time...”</p>
-    </div>
-  </section>
+        tagLinks.forEach(link => {
+          if (links.getAttribute('href') === `#${currentActive}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      };
 
-  <section id="ideation" class="mb-5 fade-in-up delay-6">
-    <div class="card p-4 pro-ux-card">
-      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Ideation</h2>
-      <p>Card sorting... similarity matrix... tree testing... updated site map...</p>
-    </div>
-  </section>
-
-  <section id="prototype" class="mb-5 fade-in-up delay-7">
-    <div class="card p-4 pro-ux-card">
-      <h2 class="mb-3" style="font-weight: 700; color: #2a3142;">Prototype</h2>
-      <p>We ran usability tests... improved navigation... 146.3% SUS increase...</p>
-    </div>
-  </section>
-</div>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background: #f7f9fb;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    color: #2a3142;
-  }
-
-  .pro-ux-card {
-    border: none;
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 2px 16px 0 rgba(44, 62, 80, 0.07);
-    transition: box-shadow 0.2s;
-  }
-  .pro-ux-card:hover {
-    box-shadow: 0 4px 32px 0 rgba(44, 62, 80, 0.12);
-  }
-
-  .tag-link {
-    background: lightgrey;
-    color: #2a3142;
-    border: 1px solid #e0e7ef;
-    font-size: 0.9rem;
-    padding: 7px 16px;
-    border-radius: 999px;
-    font-weight: 500;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: background 0.2s, color 0.2s;
-    box-shadow: 0 1px 2px 0 rgba(44, 62, 80, 0.03);
-  }
-
-  .tag-link:hover {
-    background: #e0e7ef;
-    color: orange;
-    border-color: #b6c6e3;
-  }
-
-  .tag-nav {
-    justify-content: center;
-    position: relative;
-  }
-
-  @media (min-width: 900px) {
-    .tag-nav {
-      position: fixed !important;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      flex-direction: column !important;
-      gap: 10px !important;
-      background: transparent !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      justify-content: flex-start !important;
-      z-index: 1000;
-      width: max-content;
-    }
-  }
-
-  h1, h2 {
-    letter-spacing: -0.5px;
-  }
-
-  .delay-0 { transition-delay: 0s; }
-  .delay-1 { transition-delay: 0.1s; }
-  .delay-2 { transition-delay: 0.2s; }
-  .delay-3 { transition-delay: 0.3s; }
-  .delay-4 { transition-delay: 0.4s; }
-  .delay-5 { transition-delay: 0.5s; }
-  .delay-6 { transition-delay: 0.6s; }
-  .delay-7 { transition-delay: 0.7s; }
-
-  @media (max-width: 600px) {
-    .container {
-      padding: 1rem !important;
-    }
-    h1#typewriter {
-      font-size: 1.7rem !important;
-    }
-    .pro-ux-card {
-      padding: 1.2rem !important;
-    }
-    .tag-link {
-      font-size: 0.85rem;
-      padding: 6px 12px;
-    }
-  }
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.fade-in-up').forEach(el => {
-    el.classList.add('show');
-  });
-});
-</script>
+      // Set active tag on initial load and on scroll
+      window.addEventListener('scroll', setActiveTag);
+      setActiveTag(); // Call on load to set initial active state
+    });
+  </script>
+</body>
+</html>

@@ -8,7 +8,7 @@ def index
     { id: 2, name: "Bandcamp", description: "App redesign", image_url: "https://f4.bcbits.com/img/0027834469_0", type: "UX Design" },
     { id: 3, name: "British Fencing", description: "Information Architecture", image_url: "https://freight.cargo.site/t/original/i/5b4cc062d685ba39a884774e058e39e1070f33430879e0af609e8a8bc4674a0f/006_Cardsort_Square_1.gif", type: "UX Design" },
     { id: 4, name: "Knowit", description: "AI quiz game", image_url: "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUycnR6MDhpd3JiMms5aGd0djd3OTB5Zmg5czIwam4wbDhodjd2emZiNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/WvuMTf88aV3FQ4odG5/source.gif", type: "Web Dev" },
-
+    { id: 5, name: "Playza 🔐", description: "Football Management App", image_url: "https://media1.giphy.com/media/5eFidyg1fIBYy1MtqZ/giphy.gif?cid=82a1493b0b0nbtox51v0knpi5spbny2i61xfm18rh8j5d2fy&ep=v1_gifs_search&rid=giphy.gif&ct=g", type: "Web Dev" },
   ]
 end
 
