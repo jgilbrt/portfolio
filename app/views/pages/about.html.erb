@@ -59,7 +59,7 @@
 
   <section id="stack" class="mb-5 fade-in-up delay-5">
     <div class="card p-4 rounded-4 shadow-sm text-center">
-      <h2 class="mb-4 fw-bold text-dark" style="color: #2a3142;">[ Tech Stack ]</h2>
+      <h2 class="mb-4 fw-bold text-dark" style="color: #2a3142;">[ TECH STACK ]</h2>
       <div class="d-flex flex-wrap justify-content-center gap-4">
         <% stack_items = [
           { name: "Figma", src: "https://cdn3d.iconscout.com/3d/premium/thumb/figma-3d-icon-download-in-png-blend-fbx-gltf-file-formats--logo-call-speaker-cubes-graphic-design-pack-tools-icons-8973594.png" },
@@ -73,7 +73,7 @@
           <div class="d-flex flex-column align-items-center">
             <img src="<%= item[:src] %>" alt="<%= item[:name] %>"
                  class="mb-2" style="width: 90px; height: 90px;">
-            <span class="badge bg-dark text-white rounded px-3 py-2 font-monospace">
+            <span class="badge bg-muted text-dark rounded px-3 py-2 font-monospace">
               <%= item[:name] %>
             </span>
           </div>
@@ -83,7 +83,7 @@
   </section>
 
   <div class="text-center mb-4 mt-4 fade-in-up delay-6">
-    <%= link_to projects_path, class: "btn btn-outline-secondary btn-lg fw-bold text-uppercase px-4 py-3 rounded-3 border-3", style: "font-size: 1.2rem;" do %>
+    <%= link_to projects_path, class: "btn btn-outline-warning text-dark btn-lg fw-bold text-uppercase px-4 py-3 rounded-3 border-3", style: "font-size: 1.2rem;" do %>
       Go to my Projects
     <% end %>
   </div>

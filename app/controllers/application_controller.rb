@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
                   when "contacts#create"
                     "Contact"
                   else
-                    "Home"
+                    "Contact"
                   end
   end
 end
