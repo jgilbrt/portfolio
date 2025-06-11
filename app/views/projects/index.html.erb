@@ -1,9 +1,12 @@
 <div class="container-fluid py-4 mt-4" style="max-width:100%;overflow-x:visible;">
   <div class="d-flex justify-content-center mb-3">
-    <button id="toggle-projects-btn" class="btn btn-outline-secondary fw-bold text-uppercase px-2 py-1 rounded-2 border-3" aria-expanded="true" aria-controls="projects-container" style="font-size:.8rem;">Hide Projects</button>
+    <button id="toggle-projects-btn" class="btn btn-outline-warning text-dark fw-bold text-uppercase mb-2 px-2 py-1 rounded-2 border-3" aria-expanded="true" aria-controls="projects-container" style="font-size:1rem;">Hide Projects</button>
   </div>
+
   <div id="projects-container" tabindex="0" aria-label="Project cards container">
-    <div class="d-flex justify-content-center flex-wrap mb-3 gap-2" role="group" aria-label="Filter projects by type">
+
+    <!-- Filter Buttons -->
+    <div class="d-flex justify-content-center flex-wrap mb-2 gap-2" role="group" aria-label="Filter projects by type">
       <input type="radio" class="btn-check" name="project-filter" id="filter-all" autocomplete="off" checked data-filter="all">
       <label class="btn btn-outline-info fw-bold text-uppercase px-2 py-1 rounded-2 border-3" for="filter-all" style="font-size:.8rem;">ALL</label>
 
@@ -14,37 +17,127 @@
       <label class="btn btn-outline-primary fw-bold text-uppercase px-2 py-1 rounded-2 border-3" for="filter-ux-design" style="font-size:.8rem;">UX DESIGN</label>
     </div>
 
+    <!-- View Toggle Button -->
+    <div class="d-flex justify-content-center pt-4 mt-2 mb-3">
+    <button id="toggle-view-btn" class="btn btn-outline-dark fw-bold text-uppercase px-2 py-1 rounded-2 border-3" style="font-size:.8rem;">Scroll View</button>
+    </div>
+
+    <!-- Card Container -->
     <div class="px-2 pt-4 pb-3 hide-scrollbar" style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
-      <div class="d-flex flex-nowrap gap-3 p-2">
+    <div id="project-card-wrapper" class="d-flex gap-3 pt-4 ps-2">
         <% @projects.each do |project| %>
           <div class="flex-shrink-0 project-card-item"
                data-project-id="<%= project[:id] %>" data-name="<%= project[:name] %>" data-description="<%= project[:description] %>"
-               data-image-url="<%= project[:image_url] %>" data-type="<%= project[:type].parameterize(separator: '_') %>"
-               style="width:280px;border-radius:16px;background:#fff;box-shadow:0 3px 9px rgb(0 0 0 / 0.2);cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;display:flex;flex-direction:column;position:relative;margin-bottom:1rem;">
-            <div class="position-absolute top-0 start-0 m-3 px-2 py-1 rounded-2 fw-bold text-uppercase"
-                 style="font-size:.8rem;background-color:rgba(255,255,255,.9);z-index:10;
-                 <% if project[:type].parameterize(separator: '_') == 'web_dev' %> border:3px solid #28a745;color:#28a745;
-                 <% elsif project[:type].parameterize(separator: '_') == 'ux_design' %> border:3px solid #007bff;color:#007bff;
-                 <% end %>">
+               data-image-url="<%= project[:image_url] %>" data-type="<%= project[:type].parameterize(separator: '_') %>">
+            <div class="position-absolute top-0 start-0 m-3 px-2 py-1 rounded-2 fw-bold text-uppercase project-type-label">
               <%= project[:type] %>
             </div>
-            <img src="<%= project[:image_url] %>" alt="<%= project[:name] %>" class="img-fluid" style="height:180px;object-fit:cover;border-top-left-radius:12px;border-top-right-radius:12px;width:100%;flex-shrink:0;" />
+            <img src="<%= project[:image_url] %>" alt="<%= project[:name] %>" class="img-fluid project-img" />
             <div class="p-3 d-flex flex-column justify-content-center flex-grow-1">
-              <h6 class="mb-1 fw-bold text-dark" style="font-size:1.1rem;"><%= project[:name] %></h6>
-              <p class="mb-0 text-secondary" style="font-size:.9rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><%= project[:description] %></p>
+              <h6 class="mb-1 fw-bold text-dark project-title"><%= project[:name] %></h6>
+              <p class="mb-0 text-secondary project-description"><%= project[:description] %></p>
             </div>
           </div>
         <% end %>
       </div>
     </div>
   </div>
+
+  <!-- Selected Project Detail -->
   <div id="selected-project-detail" class="mt-4" tabindex="0" aria-live="polite" aria-atomic="true">
     <h3 class="text-center text-muted">[ SELECT A PROJECT ]</h3>
   </div>
 </div>
+
+<!-- Back to top -->
 <button id="back-to-top-btn" class="btn btn-secondary btn-sm position-fixed rounded-circle shadow"
         style="bottom:30px;right:30px;z-index:1100;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-family:'Source Code Pro',monospace;">↑</button>
 
+<!-- Additional Styles -->
+<style>
+  .project-card-item {
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 3px 9px rgb(0 0 0 / 0.2);
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 1rem;
+    width: 280px;
+  }
+  .project-img {
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .project-title {
+    font-size: 1.1rem;
+  }
+  .project-description {
+    font-size: .9rem;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .project-type-label {
+    font-size: .8rem;
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 10;
+  }
+
+  /* Type-specific borders */
+  .project-card-item[data-type="web_dev"] .project-type-label {
+    border: 3px solid #28a745;
+    color: #28a745;
+  }
+  .project-card-item[data-type="ux_design"] .project-type-label {
+    border: 3px solid #007bff;
+    color: #007bff;
+  }
+
+  /* Horizontal vs Vertical view */
+  .project-view-horizontal {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+.project-view-vertical {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .project-view-vertical {
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .project-view-vertical {
+    grid-template-columns: repeat(3, 1fr); /* Optional: 3 columns on very large screens */
+    padding:20px;
+    margin:20px;
+  }
+}
+
+/* Remove width override from cards in vertical view */
+.project-view-vertical .project-card-item {
+  width: 100% !important;
+  max-width: 100%;
+  margin: 0;
+}
+
+</style>
+
+<!-- JavaScript -->
 <script>
   function initProjectPage() {
     const backToTopBtn = document.getElementById('back-to-top-btn');
@@ -53,6 +146,8 @@
     const toggleBtn = document.getElementById('toggle-projects-btn');
     const filterButtons = document.querySelectorAll('input[name="project-filter"]');
     const projectCards = document.querySelectorAll('.project-card-item');
+    const viewToggleBtn = document.getElementById('toggle-view-btn');
+    const cardWrapper = document.getElementById('project-card-wrapper');
 
     const applyHoverEffects = (card) => {
       card.onmouseover = () => { card.style.transform = 'translateY(-8px)'; card.style.boxShadow = '0 8px 16px rgba(0,0,0,0.15)'; };
@@ -61,7 +156,7 @@
     const removeHoverEffects = (card) => { card.onmouseover = null; card.onmouseout = null; };
 
     projectCards.forEach(applyHoverEffects);
-    if (backToTopBtn) backToTopBtn.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+    if (backToTopBtn) backToTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (projectsContainer) {
       projectsContainer.onclick = (e) => {
@@ -74,20 +169,21 @@
         card.style.border = '3px solid gold'; card.style.boxShadow = '0 0 8px 3px gold'; removeHoverEffects(card);
         const selLabel = document.createElement('span');
         selLabel.textContent = 'SELECTED'; selLabel.className = 'selected-label position-absolute rounded-1 fw-bold text-dark';
-        // Adjust style to prevent clipping and ensure it's on top of the border
         selLabel.style.cssText = 'top:-14px; right:12px; background-color:gold; font-size:.75rem; padding:2px 6px; z-index:20; user-select:none; pointer-events:none; border: 2px solid gold;';
         card.appendChild(selLabel);
         const projName = card.getAttribute("data-name").toLowerCase().replace(/\s+/g,'');
         fetch(`/projects/partial/${projName}`).then(res => {
-          if (!res.ok) { console.error(`Partial for ${projName} not found.`); detailDiv.innerHTML = `<h4 class="text-center text-danger mt-4">Details not available.</h4>`; throw new Error("Partial not found"); }
+          if (!res.ok) { detailDiv.innerHTML = `<h4 class="text-center text-danger mt-4">Details not available.</h4>`; throw new Error("Partial not found"); }
           return res.text();
         }).then(html => {
           detailDiv.innerHTML = html;
-          // Adjust scrollIntoView to account for fixed navbar height and the label
-          const yOffset = - (mainNavbar.offsetHeight + 20); // mainNavbar height + some extra padding
-          const y = detailDiv.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({top: y, behavior: 'smooth'});
-        }).catch(err => { console.error("Error fetching partial:", err); });
+              setTimeout(() => {
+                const yOffset = -60; // Adjust to match your navbar height
+                const y = detailDiv.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }, 50);
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }).catch(err => console.error("Error fetching partial:", err));
       };
     }
 
@@ -112,9 +208,46 @@
       });
     });
 
+if (viewToggleBtn && cardWrapper) {
+  // Set default view based on screen width
+  const isMobile = window.innerWidth < 900;
+  if (isMobile) {
+    cardWrapper.classList.add('project-view-horizontal');
+    viewToggleBtn.textContent = 'List View';
+  } else {
+    cardWrapper.classList.add('project-view-vertical');
+    viewToggleBtn.textContent = 'Scroll View';
+  }
+
+  // Toggle on button click
+  viewToggleBtn.onclick = () => {
+    const isCurrentlyHorizontal = cardWrapper.classList.contains('project-view-horizontal');
+    cardWrapper.classList.toggle('project-view-horizontal', !isCurrentlyHorizontal);
+    cardWrapper.classList.toggle('project-view-vertical', isCurrentlyHorizontal);
+    viewToggleBtn.textContent = isCurrentlyHorizontal ? 'Scroll View' : 'List View';
+  };
+}
+
+window.addEventListener('resize', () => {
+  if (!viewToggleBtn || !cardWrapper) return;
+  const isMobile = window.innerWidth < 900;
+  const isCurrentlyHorizontal = cardWrapper.classList.contains('project-view-horizontal');
+
+  if (isMobile && !isCurrentlyHorizontal) {
+    cardWrapper.classList.remove('project-view-vertical');
+    cardWrapper.classList.add('project-view-horizontal');
+    viewToggleBtn.textContent = 'List View';
+  } else if (!isMobile && isCurrentlyHorizontal) {
+    cardWrapper.classList.remove('project-view-horizontal');
+    cardWrapper.classList.add('project-view-vertical');
+    viewToggleBtn.textContent = 'Scroll View';
+  }
+});
+
     const allFilterBtn = document.getElementById('filter-all');
     if (allFilterBtn) { allFilterBtn.checked = true; allFilterBtn.dispatchEvent(new Event('change')); }
   }
+
   document.addEventListener('DOMContentLoaded', initProjectPage);
   document.addEventListener('turbo:load', initProjectPage);
 </script>
